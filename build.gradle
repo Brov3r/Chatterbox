@@ -1,0 +1,71 @@
+/**
+ * Gradle plugins
+ */
+plugins {
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'java'
+}
+
+group = 'io.github.brov3r.chatterbox'
+version = '1.0'
+
+/**
+ * Path to the compiled Jar file
+ */
+def buildPath = System.getenv('BUILD_PATH') ?: 'build';
+
+/**
+ * Repositories for project dependencies
+ */
+repositories {
+    mavenCentral()
+}
+
+/**
+ * Replacing data with current ones
+ */
+processResources {
+    filesMatching('**/metadata.yml') {
+        filter {
+            it.replace('%PROJECT_VERSION%', version)
+        }
+    }
+}
+
+/**
+ * Project Dependencies
+ */
+dependencies {
+    /**
+     * Project Zomboid
+     * You can download these dependencies on the Avrix releases page (https://github.com/Brov3r/Avrix/releases)
+     */
+    compileOnly files('./libs/ProjectZomboid-core-41.78.16.jar')
+    compileOnly files('./libs/ProjectZomboid-libs-41.78.16.jar')
+
+    /**
+     * Avrix Loader
+     * You can download these dependencies on the Avrix releases page (https://github.com/Brov3r/Avrix/releases)
+     */
+    compileOnly files('./libs/Avrix-Core-1.5.2.jar')
+
+    /**
+     * Utils
+     */
+    compileOnly files('./libs/DiscordAPI-1.4.jar')
+}
+
+/**
+ * Creating a Jar file
+ */
+shadowJar {
+    archiveFileName.set("${rootProject.name}-${version}.jar")
+    destinationDirectory.set(file(buildPath))
+
+    manifest {
+        attributes(
+                'Implementation-Title': rootProject.name,
+                'Implementation-Version': version,
+        )
+    }
+}

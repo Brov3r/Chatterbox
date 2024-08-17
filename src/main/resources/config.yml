@@ -1,0 +1,25 @@
+# Chat webhook link for game messages
+chatWebHookURL: "..."
+# ID chat, where game messages will be displayed
+chatID: "..."
+# Message template in the game chat:
+# <SPACE> - space
+# <NICKNAME> - nickname of the player from Discord
+# <MESSAGE> - message from Discord
+gameChatTemplate: "<RGB:0.35,0.40,0.95> [Discord] <SPACE> <RGB:0.58,0.58,0.78> <NICKNAME>: <SPACE> <RGB:1,1,1> <MESSAGE>"
+# Messages text
+messages:
+  serverStart: ":arrows_counterclockwise: The server started successfully!"
+  serverShutdown: ":stop_sign: Server stopped for maintenance!"
+  playerJoin: ":wave: Player **<PLAYER>** has connected to the server! (Players: <CURRENT_PLAYERS>/<MAX_PLAYERS>)"
+  playerLeave: ":walking: Player **<PLAYER>** disconnected from the server! (Players: <CURRENT_PLAYERS>/<MAX_PLAYERS>)"
+  playerDeath: ":skull: Player **<PLAYER>** is dead!"
+  playerDeathBattle: ":crossed_swords: Player **<PLAYER>** died in a battle with **<ENEMY>**!"
+  playerKick: ":red_circle: Player **<PLAYER>** was kicked by **<ADMIN>** from the server for the following reasons: **<REASON>**!"
+  playerBan: ":red_circle: Player **<PLAYER>** was banned **<ADMIN>** from the server for the following reasons: **<REASON>**!"
+# Commands
+commands:
+  players:
+    description: "Getting the current number of players online"
+    title: "Online players <CURRENT_PLAYERS>/<MAX_PLAYERS>"
+    noPlayers: "There are no players on the server!"

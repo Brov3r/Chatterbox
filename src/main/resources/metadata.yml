@@ -1,0 +1,14 @@
+name: "Chatterbox"
+id: "chatterbox"
+description: "Custom discord bot for the server"
+author: "Brov3r"
+version: "%PROJECT_VERSION%" # Do not change it, as it is inserted automatically when building the project
+environment: "server" # or client, or both
+license: "MIT"
+contacts: "https://github.com/brov3r/"
+entrypoints:
+  - "io.github.brov3r.chatterbox.Main"
+dependencies:
+  pz-core: ">=41.78.16"
+  avrix-loader: ">=1.5.0"
+  discord-api: ">=1.4"
